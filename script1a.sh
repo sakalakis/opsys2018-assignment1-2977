@@ -13,12 +13,12 @@ while IFS=' ' read
 do
         if grep -Fq "$REPLY" $HOME/database.txt
         then
-                :
-        else
-                echo "$REPLY NEW"
-                var2="curl -s $REPLY|md5sum|cut -d ' ' -f 1 "
-                echo "$REPLY" >database.txt
-                eval var2
 
+        else
+                echo "$REPLY INIT"
+                var2="curl -s $REPLY|md5sum|cut -d ' ' -f 1"
+                eval $var2 >md5swap.dat
+                link=$(head -1 md5swap.dat)
+                echo "$REPLY $link">>database.txt
         fi
 done < "$input1"
