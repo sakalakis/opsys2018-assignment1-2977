@@ -17,6 +17,7 @@ do
                 var2="curl -s $REPLY|md5sum|cut -d ' ' -f 1"
                 eval $var2 >md5swap.dat
                 link=$(head -1 md5swap.dat)
+                #edw tha epaize kalytera me awk alla eipate na min tin xrisimopoiisoume
                 while IFS=" " read -r website1 hash1
                 do
                         if ["$REPLY"="$website1"] && ["$hash1" != "$link"]
